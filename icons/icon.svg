@@ -1,1 +1,7 @@
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<rect width="512" height="512" rx="112" fill="#10231b"/>
+<circle cx="256" cy="215" r="105" fill="#e8d7a2"/>
+<path d="M256 125c-30 55-55 105-55 145 0 31 25 56 55 56s55-25 55-56c0-40-25-90-55-145Z" fill="#3c7656"/>
+<path d="M118 392c48-56 105-74 138-74s90 18 138 74" fill="none" stroke="#e8d7a2" stroke-width="26" stroke-linecap="round"/>
+<text x="256" y="458" text-anchor="middle" font-family="Georgia" font-size="44" fill="#fff">AAG</text>
+</svg>

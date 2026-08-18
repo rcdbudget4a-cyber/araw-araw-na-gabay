@@ -1,47 +1,32 @@
-# Araw-Araw na Gabay FINAL
+# Araw-Araw na Gabay FINAL 1.2
 
-A complete installable PWA for a 365-day Filipino devotional.
+Installable PWA for a 365-day Filipino devotional.
 
-## Included
-- 365 curated KJV references
-- Filipino daily reflection
-- 365 generated prayer entries
+## Final features
+- 365 curated KJV Scripture references
+- Daily Filipino application
+- Daily prayer
 - Daily practical action
-- Date navigation and calendar
-- Previous / Next day
+- Previous / Next day navigation
+- Calendar
 - Saved devotionals
 - Reading progress and streak
 - Search
-- Horoscope by zodiac and date
-- 30 local nature backgrounds
-- PWA manifest and service worker
-- Local caching for offline use after content has been viewed
-- KJV text fetched from DailyBible.ca and cached on the device
+- Zodiac horoscope for reflection and entertainment
+- 30 local nature backgrounds with readable overlay
+- PWA installation and offline shell/background caching
+- Visible version `v1.2`
 
-## GitHub upload
-Replace your existing:
-- index.html
-- app.js
-- style.css
-- sw.js
-- manifest.json
-- data/content.json
+## Bible source
+The app uses the King James Version, first published in 1611. The KJV is a historic English translation, not the original first-century biblical manuscripts.
 
-Upload/replace:
-- assets/backgrounds/
-- icons/
+The KJV verse text is retrieved from DailyBible.ca's public-domain KJV API and cached after viewing. API documentation: https://dailybible.ca/api-docs
 
-Then commit the changes. Vercel should redeploy automatically.
+The daily reference selection follows the 365-verse curated KJV archive from Bible Sundays: https://www.biblesundays.com/daily-verse/archive
 
-## Important Bible note
-The King James Version is a historic English translation first published in 1611. It is not the original first-century manuscripts. The app uses KJV text for the daily Scripture display.
+## Upload
+Upload the contents of this package to the root of the connected GitHub repository. Keep the exact folder:
 
-## Offline note
-The app bundles its interface, data, icons, and backgrounds. KJV verse text is fetched from the API and cached after it is viewed. A verse that has never been loaded while online may not have its full text available offline.
+`assets/backgrounds/`
 
-## Horoscope note
-Horoscope content is for reflection and entertainment, not guaranteed prediction.
-
-
-## FINAL 1.1 background fix
-Backgrounds now use explicit relative `./assets/backgrounds/` paths, are preloaded before display, have a local fallback, and use a new service-worker cache version so the old cached background path is removed after deployment.
+After Vercel deploys, open the web URL first. The header should show `v1.2`.

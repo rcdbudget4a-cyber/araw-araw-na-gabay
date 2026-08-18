@@ -1,6 +1,10 @@
-Araw-Araw na Gabay FINAL 1.1
-Background path/loading corrected
-Explicit ./assets/backgrounds paths
-Background preload with fallback
-Service worker cache version bumped to aag-final-1-1
-Old service-worker caches deleted on activation
+Araw-Araw na Gabay FINAL 1.2
+365 curated KJV references
+365 Filipino devotional entries with daily application
+365 prayers and practical actions
+30 local nature backgrounds
+Explicit background paths and preload fallback
+Visible app version v1.2
+Cache-busted shell assets
+Network-first app/data update strategy
+Old service-worker caches removed on activation

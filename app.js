@@ -1,6 +1,7 @@
 const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
 let content=null,selectedDate=new Date(),selectedZodiac=localStorage.getItem("aag-zodiac")||"Aries",deferred=null,currentPage="home";
 const PH_TZ="Asia/Manila";
+const APP_VERSION="1.2";
 const work=["Unahin ang pinakamahalagang gawain at iwasang sabay-sabayin ang lahat.","Maging mahinahon sa pakikipag-usap sa katrabaho.","Suriin ang detalye bago magsumite ng mahalagang trabaho.","Kung may hindi pagkakaunawaan, alamin muna ang buong kuwento.","Ang pagiging maaasahan ay mahalaga kahit walang pumapansin.","Maglaan ng oras para ayusin ang isang gawaing matagal nang ipinagpapaliban.","Huwag hayaang ang inis mula sa trabaho ang magdikta sa pakikitungo mo sa iba.","Makinig muna bago magbigay ng sagot o mungkahi.","Piliin ang tamang prayoridad kaysa subukang tapusin ang lahat.","Kung kailangan ng tulong, humingi nito nang maaga."];
 const money=["Bantayan ang maliliit na gastusin na paulit-ulit.","Bago bumili, tanungin kung kailangan o gusto lamang.","Magtabi ng maliit na halaga para sa biglaang pangangailangan.","Iwasang gumawa ng malaking desisyong pinansyal dahil sa pressure.","Kung may utang, gumawa ng malinaw na plano sa pagbabayad.","Suriin ang mga subscription o bayaring hindi na kailangan.","Kung may dagdag na kita, maglaan muna ng bahagi para sa ipon.","Iwasang makipagsabayan sa gastos ng ibang tao.","Magplano ng gastusin bago dumating ang payday.","Ang disiplina sa pera ay mas mahalaga kaysa impresyon sa iba."];
 const love=["Magsalita nang mahinahon kahit may hindi pagkakaunawaan.","Makinig nang buo bago sumagot.","Ang simpleng oras na magkakasama ay mahalaga.","Kung may sama ng loob, pag-usapan ito kapag kalmado.","Huwag magdesisyon tungkol sa relasyon dahil lamang sa isang masamang araw.","Ang tiwala ay nabubuo sa maliliit na tapat na gawain.","Magpasalamat sa isang mabuting katangian ng taong mahalaga sa iyo.","Humingi ng tawad kung may nasabi o nagawa kang mali.","Huwag gawing sukatan ng pagmamahal ang mamahaling bagay.","Maglaan ng panahon sa taong mahalaga sa iyo."];
@@ -15,7 +16,7 @@ function readDays(){return JSON.parse(localStorage.getItem("aag-read")||"[]")}
 function dayIndex(){return planDay(selectedDate)-1}
 function zodiac(){return content.zodiacs.find(z=>z.name===selectedZodiac)||content.zodiacs[0]}
 async function getVerse(ref){
- const key="aag-kjv-"+ref.replaceAll(" ","_");
+ const key="aag-kjv-v1-"+ref.replaceAll(" ","_");
  const c=localStorage.getItem(key);if(c)return JSON.parse(c);
  try{
   const r=await fetch("https://dailybible.ca/api/"+encodeURIComponent(ref)+"?translation=kjv",{headers:{Accept:"application/json"}});
@@ -114,4 +115,4 @@ window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;
 $("#installBtn").onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$("#installBtn").classList.add("hidden")};
 if("serviceWorker"in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js"));
 
-fetch("data/content.json").then(r=>r.json()).then(x=>{content=x;render()}).catch(()=>{$("#verseText").textContent="Hindi ma-load ang app data. I-refresh kapag may internet."});
+fetch("./data/content.json?v="+APP_VERSION,{cache:"no-store"}).then(r=>r.json()).then(x=>{content=x;render()}).catch(()=>{$("#verseText").textContent="Hindi ma-load ang app data. I-refresh kapag may internet."});

@@ -1,1 +1,253 @@
-
+{
+  "source": "King James Version (KJV), public-domain text. The 1611 edition and later standard KJV texts are distinct historical editions.",
+  "contentNote": "The app labels the Scripture source clearly. Filipino reflections and horoscope readings are original app content.",
+  "verses": [
+    {
+      "ref": "Psalm 23:1",
+      "text": "The LORD is my shepherd; I shall not want."
+    },
+    {
+      "ref": "Proverbs 3:5",
+      "text": "Trust in the LORD with all thine heart; and lean not unto thine own understanding."
+    },
+    {
+      "ref": "Proverbs 3:6",
+      "text": "In all thy ways acknowledge him, and he shall direct thy paths."
+    },
+    {
+      "ref": "Philippians 4:13",
+      "text": "I can do all things through Christ which strengtheneth me."
+    },
+    {
+      "ref": "Isaiah 41:10",
+      "text": "Fear thou not; for I am with thee: be not dismayed; for I am thy God."
+    },
+    {
+      "ref": "Psalm 46:1",
+      "text": "God is our refuge and strength, a very present help in trouble."
+    },
+    {
+      "ref": "Matthew 11:28",
+      "text": "Come unto me, all ye that labour and are heavy laden, and I will give you rest."
+    },
+    {
+      "ref": "Jeremiah 29:11",
+      "text": "For I know the thoughts that I think toward you, saith the LORD, thoughts of peace, and not of evil."
+    },
+    {
+      "ref": "Romans 8:28",
+      "text": "And we know that all things work together for good to them that love God."
+    },
+    {
+      "ref": "Psalm 37:5",
+      "text": "Commit thy way unto the LORD; trust also in him; and he shall bring it to pass."
+    },
+    {
+      "ref": "Joshua 1:9",
+      "text": "Be strong and of a good courage; be not afraid, neither be thou dismayed: for the LORD thy God is with thee whithersoever thou goest."
+    },
+    {
+      "ref": "Psalm 121:1-2",
+      "text": "I will lift up mine eyes unto the hills, from whence cometh my help. My help cometh from the LORD, which made heaven and earth."
+    },
+    {
+      "ref": "Proverbs 16:3",
+      "text": "Commit thy works unto the LORD, and thy thoughts shall be established."
+    },
+    {
+      "ref": "Psalm 34:8",
+      "text": "O taste and see that the LORD is good: blessed is the man that trusteth in him."
+    },
+    {
+      "ref": "Matthew 6:33",
+      "text": "But seek ye first the kingdom of God, and his righteousness; and all these things shall be added unto you."
+    },
+    {
+      "ref": "Psalm 55:22",
+      "text": "Cast thy burden upon the LORD, and he shall sustain thee: he shall never suffer the righteous to be moved."
+    },
+    {
+      "ref": "Galatians 6:9",
+      "text": "And let us not be weary in well doing: for in due season we shall reap, if we faint not."
+    },
+    {
+      "ref": "Psalm 27:1",
+      "text": "The LORD is my light and my salvation; whom shall I fear?"
+    },
+    {
+      "ref": "Proverbs 16:9",
+      "text": "A man's heart deviseth his way: but the LORD directeth his steps."
+    },
+    {
+      "ref": "Ecclesiastes 3:1",
+      "text": "To every thing there is a season, and a time to every purpose under the heaven."
+    },
+    {
+      "ref": "Psalm 118:24",
+      "text": "This is the day which the LORD hath made; we will rejoice and be glad in it."
+    },
+    {
+      "ref": "Lamentations 3:22-23",
+      "text": "It is of the LORD'S mercies that we are not consumed, because his compassions fail not. They are new every morning."
+    },
+    {
+      "ref": "Psalm 91:1",
+      "text": "He that dwelleth in the secret place of the most High shall abide under the shadow of the Almighty."
+    },
+    {
+      "ref": "Romans 12:12",
+      "text": "Rejoicing in hope; patient in tribulation; continuing instant in prayer."
+    },
+    {
+      "ref": "1 Peter 5:7",
+      "text": "Casting all your care upon him; for he careth for you."
+    },
+    {
+      "ref": "Psalm 19:14",
+      "text": "Let the words of my mouth, and the meditation of my heart, be acceptable in thy sight, O LORD."
+    },
+    {
+      "ref": "Micah 6:8",
+      "text": "He hath shewed thee, O man, what is good; and what doth the LORD require of thee."
+    },
+    {
+      "ref": "Psalm 32:8",
+      "text": "I will instruct thee and teach thee in the way which thou shalt go: I will guide thee with mine eye."
+    },
+    {
+      "ref": "Proverbs 18:10",
+      "text": "The name of the LORD is a strong tower: the righteous runneth into it, and is safe."
+    },
+    {
+      "ref": "John 14:27",
+      "text": "Peace I leave with you, my peace I give unto you."
+    },
+    {
+      "ref": "Psalm 90:17",
+      "text": "And let the beauty of the LORD our God be upon us: and establish thou the work of our hands upon us."
+    }
+  ],
+  "themes": [
+    "Sa trabaho at pang-araw-araw na responsibilidad, gawin muna ang kaya mong gawin nang maayos. Hindi mo kailangang dalhin nang sabay-sabay ang lahat ng problema.",
+    "Kung mabigat ang isip tungkol sa pera o pamilya, huminto sandali bago magdesisyon. Ang mahinahong isip ay mas nakapipili ng tamang hakbang.",
+    "May mga araw na hindi nasusunod ang plano. Gamitin ang araw na ito para maging matiyaga, maingat sa salita, at tapat sa tungkulin.",
+    "Ang pamilya ay nangangailangan din ng oras, hindi lamang ng suporta sa pera. Isang maayos na usapan ay maaaring makapagpagaan ng isang buong araw.",
+    "Sa trabaho, iwasan ang padalus-dalos na sagot. Ang respeto at pagpipigil sa sarili ay nakatutulong kahit mahirap ang kausap.",
+    "Kapag may gastusing hindi kailangan, pag-isipan muna. Ang maliit na disiplina ngayon ay nakatutulong sa kinabukasan ng pamilya.",
+    "Kung pagod ka sa biyahe, trabaho, o mga gawain sa bahay, bigyan ang sarili ng ilang minutong tahimik na panalangin.",
+    "May pagkakataong kailangan nating humingi ng tawad o magpatawad. Huwag hayaang lumaki ang isang maliit na sama ng loob.",
+    "Hindi lahat ng sagot ay makikita agad. Gawin ang tama sa araw na ito at hayaang ang bukas ay dumating sa tamang panahon.",
+    "Sa pakikitungo sa kapwa, tandaan na hindi mo alam ang buong pinagdaraanan ng isang tao. Piliin ang kabaitan kung kaya.",
+    "Kapag may problema sa trabaho, unahin ang solusyon kaysa sisihan. Ang malinaw na isip ay mas mahalaga kaysa mainit na pagtatalo.",
+    "Kung may pangarap kang matagal nang ipinagpapaliban, gumawa ng isang maliit na hakbang ngayon.",
+    "May mga biyayang madaling hindi mapansin, gaya ng kalusugan, pamilya, trabaho, tahanan, pagkain, at pagkakataong magsimula muli.",
+    "Kapag hindi maganda ang takbo ng araw, huwag agad isipin na ganito na ang buong linggo. Isang araw lamang ang hawak mo ngayon.",
+    "Ang tunay na lakas ay hindi laging makikita sa pagiging matigas. Minsan, makikita ito sa paghingi ng tulong at pag-amin na napapagod ka rin.",
+    "Sa pamilya, piliin ang pakikinig bago ang pagsagot. Maraming away ang naiiwasan kapag nauunawaan muna ang isa't isa.",
+    "Kung may taong umaasa sa iyo, gawin ang iyong bahagi nang tapat. Ang pagiging maaasahan ay isang uri ng serbisyo.",
+    "Huwag ikumpara ang buhay mo sa buhay ng iba. Magpasalamat sa mayroon ka habang nagsisikap para sa nais mong makamit.",
+    "Kapag may desisyong mahalaga, isama sa panalangin ang iyong plano at tingnan kung ang hakbang ay makabubuti rin sa ibang tao.",
+    "Ang pahinga ay bahagi ng maayos na buhay. Hindi kailangang maging produktibo sa bawat minuto.",
+    "Kung may pagkakataong tumulong sa kapwa, gawin ito nang hindi naghihintay ng kapalit.",
+    "Ang pera ay mahalaga, ngunit hindi nito dapat maging sukatan ng halaga ng isang tao.",
+    "Kung dumating ang pagsubok, alalahaning ang isang mahirap na panahon ay hindi nangangahulugang wala nang magandang bukas.",
+    "Sa social media at mga usapan, huwag agad maniwala o magalit. Suriin muna ang impormasyon.",
+    "Sa araw na ito, maging maingat sa pangako. Mas mabuting magsabi ng totoo kaysa mangako ng hindi kayang gawin.",
+    "Kung may pagkakamali ka kahapon, gamitin ito bilang aral. Hindi kailangang dalhin ang bawat pagkakamali sa susunod na araw.",
+    "Sa trabaho at tahanan, ang maliliit na mabubuting gawain ay may malaking epekto kapag ginagawa nang tuloy-tuloy.",
+    "Kung may hinihintay kang resulta, gamitin ang paghihintay para maghanda sa susunod na hakbang.",
+    "May mga bagay na hindi mo kayang kontrolin. Ituon ang lakas sa mga bagay na kaya mong gawin nang tama.",
+    "Kapag may magandang balita, magpasalamat. Kapag may mahirap na balita, manalangin at humingi ng karunungan bago kumilos.",
+    "Tapusin ang araw na may pasasalamat sa mga taong tumulong sa iyo, kahit sa simpleng paraan."
+  ],
+  "zodiacs": [
+    {
+      "name": "Aries",
+      "symbol": "♈",
+      "dates": "Marso 21 – Abril 19"
+    },
+    {
+      "name": "Taurus",
+      "symbol": "♉",
+      "dates": "Abril 20 – Mayo 20"
+    },
+    {
+      "name": "Gemini",
+      "symbol": "♊",
+      "dates": "Mayo 21 – Hunyo 20"
+    },
+    {
+      "name": "Cancer",
+      "symbol": "♋",
+      "dates": "Hunyo 21 – Hulyo 22"
+    },
+    {
+      "name": "Leo",
+      "symbol": "♌",
+      "dates": "Hulyo 23 – Agosto 22"
+    },
+    {
+      "name": "Virgo",
+      "symbol": "♍",
+      "dates": "Agosto 23 – Setyembre 22"
+    },
+    {
+      "name": "Libra",
+      "symbol": "♎",
+      "dates": "Setyembre 23 – Oktubre 22"
+    },
+    {
+      "name": "Scorpio",
+      "symbol": "♏",
+      "dates": "Oktubre 23 – Nobyembre 21"
+    },
+    {
+      "name": "Sagittarius",
+      "symbol": "♐",
+      "dates": "Nobyembre 22 – Disyembre 21"
+    },
+    {
+      "name": "Capricorn",
+      "symbol": "♑",
+      "dates": "Disyembre 22 – Enero 19"
+    },
+    {
+      "name": "Aquarius",
+      "symbol": "♒",
+      "dates": "Enero 20 – Pebrero 18"
+    },
+    {
+      "name": "Pisces",
+      "symbol": "♓",
+      "dates": "Pebrero 19 – Marso 20"
+    }
+  ],
+  "zodiacAdvice": [
+    "Maglaan ng oras sa mahalagang gawain bago tumanggap ng bagong obligasyon.",
+    "Maging maingat sa gastos. Isang praktikal na desisyon ang maaaring makatulong sa susunod na linggo.",
+    "Sa relasyon, sabihin ang totoo nang may paggalang. Iwasan ang desisyong dala lamang ng emosyon.",
+    "Sa trabaho, tapusin muna ang isang mahalagang gawain bago lumipat sa iba.",
+    "May pagkakataong kailangan mong makinig kaysa manguna sa usapan.",
+    "Kung may pagkakataong humingi ng tulong, huwag mahiyang magsabi. Hindi kailangang gawin ang lahat nang mag-isa.",
+    "Mag-ingat sa maliliit na gastos na paulit-ulit. Bantayan ang iyong budget.",
+    "Ang isang mahinahong sagot ngayon ay maaaring makaiwas sa malaking hindi pagkakaunawaan.",
+    "Ibalik ang pansin sa mga bagay na kaya mong kontrolin.",
+    "May mabuting pagkakataon para ayusin ang isang gawain na matagal nang ipinagpapaliban.",
+    "Huwag madaliin ang desisyong may epekto sa pamilya o pera.",
+    "Maglaan ng oras para sa pahinga at panalangin bago tapusin ang araw."
+  ],
+  "backgrounds": [
+    "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1501854140801-50d01698950b?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1497250681960-ef046c08a56e?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1800&q=85",
+    "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=1800&q=85"
+  ]
+}

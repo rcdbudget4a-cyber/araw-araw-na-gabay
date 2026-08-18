@@ -1,1 +1,89 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#10231b"><meta name="description" content="Araw-Araw na Gabay: daily KJV Bible, Filipino reflection, prayer and horoscope."><link rel="manifest" href="manifest.json"><link rel="icon" href="icons/icon.svg" type="image/svg+xml"><title>Araw-Araw na Gabay</title><link rel="stylesheet" href="style.css"></head><body><div id="bg"></div><div id="veil"></div><header class="topbar"><div><div class="brand">Araw-Araw na Gabay</div><div class="tagline">Salita ng Diyos • Gabay sa Buhay • Pag-asa</div></div><button id="installBtn" class="ghost" hidden>Install</button></header><main><section class="hero"><div class="eyebrow">TODAY • <span id="dateText"></span></div><h1 id="greeting">Magandang araw.</h1><p class="today-nature">🌿 <span id="natureText"></span></p></section><section class="card scripture"><div class="section-title">📖 Today's Word</div><div class="day-nav"><button id="prevBtn" class="secondary">← Previous</button><button id="nextBtn" class="secondary">Next →</button></div><div id="dayCount" class="source"></div><div id="verseRef" class="verse-ref"></div><blockquote id="verseText">Loading KJV...</blockquote><div id="source" class="source">King James Version • Public Domain</div><button id="favBtn" class="secondary">♡ Save Verse</button></section><section class="card"><div class="section-title">🇵🇭 Para sa Araw na Ito</div><p id="reflection"></p></section><section class="card"><div class="section-title">🙏 Panalangin</div><p id="prayer"></p></section><section class="card horoscope-card"><div class="section-title">🔮 Today's Horoscope</div><div class="zodiac-picker" id="zodiacPicker"></div><div id="horoscope"></div><div class="notice">Ang horoscope ay gabay sa pagninilay at libangan. Hindi ito garantiya ng mangyayari sa hinaharap.</div></section><section class="card"><div class="section-title">📅 Choose a Day</div><input id="datePicker" type="date"><button id="todayBtn" class="secondary">Return to Today</button></section><section class="card actions"><button id="shareBtn" class="primary">Share Today's Message</button><button id="darkBtn" class="secondary">Toggle Reading</button></section><p class="footer">Scripture source: KJV, public domain. KJV is a historic English translation, not the original first-century manuscripts.</p></main><nav class="bottom-nav"><button data-scroll="top">🏠<span>Home</span></button><button data-scroll="scripture">📖<span>Bible</span></button><button data-scroll="horoscope">🔮<span>Horoscope</span></button><button data-scroll="calendar">📅<span>Calendar</span></button></nav><script src="app.js"></script></body></html>
+<!doctype html>
+<html lang="fil">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#091d14">
+<meta name="description" content="Araw-Araw na Gabay, isang 365-day Filipino devotional app.">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<title>Araw-Araw na Gabay</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="bg"></div><div id="shade"></div>
+<header class="topbar">
+  <div><div class="brand">Araw-Araw na Gabay</div><div class="tagline">Salita ng Diyos • Gabay sa Buhay • Pag-asa</div></div>
+  <button id="menuBtn" class="icon-btn" aria-label="Menu">☰</button>
+</header>
+<div id="drawer" class="drawer">
+  <button data-page="home">🏠 Home</button><button data-page="saved">❤️ Saved</button><button data-page="calendar">📅 Calendar</button><button data-page="progress">📖 Progress</button><button data-page="about">ℹ️ About</button>
+</div>
+
+<main id="homePage">
+<section class="hero">
+  <div class="eyebrow">TODAY • <span id="dateText"></span></div>
+  <h1 id="greeting">Magandang araw.</h1>
+  <p class="nature">🌿 <span id="natureText"></span></p>
+</section>
+
+<section class="card scripture">
+  <div class="section-title">📖 Today's Word</div>
+  <div class="meta-row"><span id="dayLabel">Day 1 of 365</span><span id="themeLabel">Faith</span></div>
+  <div class="verse-ref" id="verseRef">Loading...</div>
+  <blockquote id="verseText">Kinukuha ang KJV text...</blockquote>
+  <div class="source">King James Version, historic English translation first published in 1611.</div>
+  <div class="controls"><button id="prevBtn" class="secondary">← Previous</button><button id="nextBtn" class="secondary">Next →</button></div>
+  <div class="controls"><button id="favBtn" class="secondary">♡ Save Verse</button><button id="shareBtn" class="secondary">↗ Share</button></div>
+</section>
+
+<section class="card">
+  <div class="section-title">🇵🇭 Para sa Araw na Ito</div>
+  <p id="reflection"></p>
+</section>
+
+<section class="card">
+  <div class="section-title">🙏 Panalangin</div>
+  <p id="prayer"></p>
+</section>
+
+<section class="card">
+  <div class="section-title">👣 Gawin Ngayon</div>
+  <p id="action"></p>
+  <button id="markBtn" class="primary">✓ Mark as Read</button>
+</section>
+
+<section class="card horoscope">
+  <div class="section-title">🔮 Today's Horoscope</div>
+  <div id="zodiacPicker" class="zodiac-picker"></div>
+  <div id="horoscopeBody"></div>
+  <div class="notice">Ang horoscope ay para sa pagninilay at libangan. Hindi ito garantiya ng mangyayari sa hinaharap at hindi ito kapalit ng payo mula sa mga propesyonal.</div>
+</section>
+
+<section class="card">
+  <div class="section-title">📅 Choose a Day</div>
+  <input id="datePicker" type="date">
+  <button id="todayBtn" class="secondary wide">Return to Today</button>
+</section>
+
+<section class="card">
+  <div class="section-title">🔎 Search</div>
+  <input id="searchBox" type="search" placeholder="Search verse, theme, or reflection">
+  <div id="searchResults"></div>
+</section>
+</main>
+
+<section id="savedPage" class="page hidden"><div class="page-title">❤️ Saved Devotionals</div><div id="savedList"></div></section>
+<section id="calendarPage" class="page hidden"><div class="page-title">📅 Calendar</div><div id="calendar"></div></section>
+<section id="progressPage" class="page hidden"><div class="page-title">📖 Reading Progress</div><div id="progress"></div></section>
+<section id="aboutPage" class="page hidden"><div class="page-title">ℹ️ About</div><div class="card"><h2>Araw-Araw na Gabay</h2><p>Isang 365-day Filipino devotional application designed around Scripture, daily reflection, prayer, practical action, and personal reflection.</p><p class="about-small">Bible translation: King James Version. The KJV is a historic English translation first published in 1611. It is not the original first-century manuscripts.</p><p class="about-small">KJV text is retrieved from the DailyBible.ca KJV API and cached on the device after it is viewed. Reference selection follows a curated 365-day KJV verse archive, with Filipino applications written for everyday life.</p></div></section>
+
+<nav class="bottom-nav">
+<button data-nav="home">🏠<span>Home</span></button>
+<button data-nav="bible">📖<span>Bible</span></button>
+<button data-nav="horoscope">🔮<span>Horoscope</span></button>
+<button data-nav="calendar">📅<span>Calendar</span></button>
+</nav>
+<button id="installBtn" class="install hidden">Install App</button>
+<script src="app.js"></script>
+</body></html>

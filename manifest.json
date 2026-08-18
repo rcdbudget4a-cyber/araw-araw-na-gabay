@@ -1,13 +1,13 @@
 {
   "name": "Araw-Araw na Gabay",
   "short_name": "Araw-Araw",
-  "description": "Daily KJV Bible, Filipino reflection, prayer and horoscope.",
+  "description": "365-day Filipino devotional with KJV Scripture, reflection, prayer, practical action and horoscope.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#10231b",
-  "theme_color": "#10231b",
-  "lang": "en-PH",
+  "background_color": "#091d14",
+  "theme_color": "#091d14",
+  "lang": "fil-PH",
   "icons": [
     {
       "src": "icons/icon-192.png",

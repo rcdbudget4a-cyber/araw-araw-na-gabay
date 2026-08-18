@@ -1,48 +1,113 @@
-const $=s=>document.querySelector(s);
-let content=null,selectedDate=new Date(),selectedZodiac=localStorage.getItem("zodiac")||"Aries",deferredInstall=null;
-
-const work=["Tapusin muna ang pinakamahalagang gawain bago tumanggap ng panibagong obligasyon.","Mag-ingat sa pakikipag-usap. Ang mahinahong salita ay makatutulong sa trabaho.","Maging organisado. Isulat ang tatlong bagay na kailangang matapos ngayon.","Kung may hindi pagkakaunawaan, alamin muna ang buong kuwento bago magpasya.","Ang pagiging maaasahan ay mas mahalaga kaysa pagiging pinakamabilis.","Suriin ang mahahalagang detalye bago isumite ang isang trabaho.","Kung maraming gawain, hatiin ang mga ito sa maliliit na hakbang.","Iwasang dalhin ang inis sa trabaho sa pakikitungo sa ibang tao.","Makinig muna bago magbigay ng mungkahi.","Gawin nang maayos ang kasalukuyang tungkulin bago isipin ang susunod."];
-const money=["Mag-ingat sa maliliit na gastos na paulit-ulit. Bantayan ang budget.","Kung may bibilhin, itanong muna kung kailangan ba talaga ito ngayon.","Magtabi kahit maliit na halaga kung kaya. Ang consistency ay mahalaga.","Iwasang gumawa ng desisyong pinansyal dahil lamang sa pressure ng iba.","Kung may utang o obligasyon, unahin ang malinaw na plano sa pagbabayad.","Ang praktikal na pagtitipid ngayon ay maaaring makatulong sa biglaang pangangailangan.","Bago gumastos, isipin kung makatutulong ba ito sa tunay na pangangailangan.","Kung may dagdag na kita, maglaan ng bahagi para sa ipon bago dagdagan ang gastos.","Huwag mangutang para lamang makasabay sa luho ng iba.","Suriin ang mga paulit-ulit na bayarin na hindi na kailangan."];
-const love=["Sabihin ang nararamdaman nang may respeto. Iwasang magsalita habang galit.","Sa relasyon, mas mahalaga ang pakikinig kaysa sa pagkapanalo sa argumento.","Isang simpleng mensahe o oras na magkasama ay maaaring makapagpagaan ng araw.","Kung may sama ng loob, pag-usapan ito kapag pareho nang kalmado.","Huwag magdesisyon tungkol sa relasyon batay lamang sa isang masamang araw.","Ang tiwala ay nabubuo sa maliliit na tapat na gawain.","Magpasalamat sa isang mabuting katangian ng taong mahalaga sa iyo.","Kung may kailangang ayusin, magsimula sa isang mahinahong pag-uusap.","Huwag gawing sukatan ng pagmamahal ang mamahaling bagay.","Bigyan ng panahon ang taong mahalaga sa iyo, kahit maikli lamang."];
-const family=["Maglaan ng oras sa pamilya kahit abala ang araw. Ang presensya ay mahalaga.","Makinig sa isang kapamilya na may gustong sabihin.","Kung may tensyon sa bahay, piliin muna ang kapayapaan bago ang pagtatalo.","Magpasalamat sa isang taong tumutulong sa pamilya.","Ang maliliit na gawaing bahay ay paraan din ng pag-aalaga sa isa't isa.","Kung may problema ang pamilya, harapin ito nang sama-sama sa halip na sisihin ang isa't isa.","Kumustahin ang isang kapamilyang bihira mong makausap.","Kung may matanda sa pamilya, maglaan ng oras upang makinig sa kanilang kuwento.","Turuan ang mga bata sa pamamagitan ng halimbawa, hindi lamang sa salita.","Sa tahanan, ang respeto ay dapat magsimula sa paraan ng pagsasalita."];
-const personal=["Maglaan ng ilang minuto para sa tahimik na panalangin.","Huwag ikumpara ang progress mo sa ibang tao.","Kung pagod ka, magpahinga bago gumawa ng mahalagang desisyon.","Ang isang maliit na mabuting hakbang ngayon ay sapat na para magsimula.","Mag-ingat sa mga salitang sinasabi mo sa sarili. Pumili ng katotohanan at pag-asa.","Tapusin ang araw sa pasasalamat kaysa sa pagbilang lamang ng mga problema.","Kung may bagay na hindi mo kayang ayusin ngayon, ipagkatiwala muna ito sa Diyos.","Maglaan ng oras para sa tahimik na pag-iisip bago sumagot sa mahirap na sitwasyon.","Alalahanin ang isang bagay na ipinagpapasalamat mo ngayong araw.","Gawin ang tama kahit walang nakakakita."];
-
-function localDay(d){const y=d.getFullYear(),start=new Date(y,0,0);return Math.max(1,Math.floor((d-start)/86400000))}
-function idx(){return(localDay(selectedDate)-1)%365}
-function fmt(d){return d.toLocaleDateString("en-PH",{weekday:"long",month:"long",day:"numeric",year:"numeric"})}
-function dateISO(d){return`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`}
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+let content=null,selectedDate=new Date(),selectedZodiac=localStorage.getItem("aag-zodiac")||"Aries",deferred=null,currentPage="home";
+const PH_TZ="Asia/Manila";
+const work=["Unahin ang pinakamahalagang gawain at iwasang sabay-sabayin ang lahat.","Maging mahinahon sa pakikipag-usap sa katrabaho.","Suriin ang detalye bago magsumite ng mahalagang trabaho.","Kung may hindi pagkakaunawaan, alamin muna ang buong kuwento.","Ang pagiging maaasahan ay mahalaga kahit walang pumapansin.","Maglaan ng oras para ayusin ang isang gawaing matagal nang ipinagpapaliban.","Huwag hayaang ang inis mula sa trabaho ang magdikta sa pakikitungo mo sa iba.","Makinig muna bago magbigay ng sagot o mungkahi.","Piliin ang tamang prayoridad kaysa subukang tapusin ang lahat.","Kung kailangan ng tulong, humingi nito nang maaga."];
+const money=["Bantayan ang maliliit na gastusin na paulit-ulit.","Bago bumili, tanungin kung kailangan o gusto lamang.","Magtabi ng maliit na halaga para sa biglaang pangangailangan.","Iwasang gumawa ng malaking desisyong pinansyal dahil sa pressure.","Kung may utang, gumawa ng malinaw na plano sa pagbabayad.","Suriin ang mga subscription o bayaring hindi na kailangan.","Kung may dagdag na kita, maglaan muna ng bahagi para sa ipon.","Iwasang makipagsabayan sa gastos ng ibang tao.","Magplano ng gastusin bago dumating ang payday.","Ang disiplina sa pera ay mas mahalaga kaysa impresyon sa iba."];
+const love=["Magsalita nang mahinahon kahit may hindi pagkakaunawaan.","Makinig nang buo bago sumagot.","Ang simpleng oras na magkakasama ay mahalaga.","Kung may sama ng loob, pag-usapan ito kapag kalmado.","Huwag magdesisyon tungkol sa relasyon dahil lamang sa isang masamang araw.","Ang tiwala ay nabubuo sa maliliit na tapat na gawain.","Magpasalamat sa isang mabuting katangian ng taong mahalaga sa iyo.","Humingi ng tawad kung may nasabi o nagawa kang mali.","Huwag gawing sukatan ng pagmamahal ang mamahaling bagay.","Maglaan ng panahon sa taong mahalaga sa iyo."];
+const family=["Kumustahin ang isang kapamilya na tahimik nitong mga araw.","Makinig sa bata o matanda sa pamilya nang walang pagmamadali.","Kung may tensyon sa bahay, piliin ang mahinahong salita.","Magpasalamat sa isang taong tumutulong sa inyong tahanan.","Ang maliliit na gawaing bahay ay paraan din ng pag-aalaga.","Huwag agad sisihin ang isa't isa kapag may problema.","Maglaan ng oras sa pamilya kahit maikli.","Kung may kapamilyang malayo, magpadala ng simpleng mensahe.","Maging mabuting halimbawa sa mga bata sa paraan ng pagsasalita.","Piliin ang respeto kahit pagod ang lahat."];
+function dayOfYear(d){const y=d.getFullYear();const start=new Date(y,0,1);return Math.floor((d-start)/86400000)+1}
+function planDay(d){let n=dayOfYear(d);if(n>365)n=365;return n}
+function iso(d){return d.toISOString().slice(0,10)}
+function displayDate(d){return new Intl.DateTimeFormat("en-PH",{timeZone:PH_TZ,weekday:"long",month:"long",day:"numeric",year:"numeric"}).format(d)}
 function greeting(){const h=new Date().getHours();return h<12?"Magandang umaga.":h<18?"Magandang araw.":"Magandang gabi."}
-function z(){return content.zodiacs.find(x=>x.name===selectedZodiac)||content.zodiacs[0]}
-
-async function verse(ref){
- const key="aag-kjv-"+ref,cached=localStorage.getItem(key);if(cached)return JSON.parse(cached);
- try{const r=await fetch("https://dailybible.ca/api/"+encodeURIComponent(ref)+"?translation=kjv",{headers:{Accept:"application/json"}});if(!r.ok)throw new Error();const j=await r.json(),text=j.text||((j.verses||[]).map(v=>v.text).join(" "));const result={ref:j.reference||ref,text};localStorage.setItem(key,JSON.stringify(result));return result}
- catch(e){return{ref,text:`Hindi ma-load ngayon ang KJV text para sa ${ref}. Kumonekta sa internet at subukang muli.`}}
+function saved(){return JSON.parse(localStorage.getItem("aag-saved")||"[]")}
+function readDays(){return JSON.parse(localStorage.getItem("aag-read")||"[]")}
+function dayIndex(){return planDay(selectedDate)-1}
+function zodiac(){return content.zodiacs.find(z=>z.name===selectedZodiac)||content.zodiacs[0]}
+async function getVerse(ref){
+ const key="aag-kjv-"+ref.replaceAll(" ","_");
+ const c=localStorage.getItem(key);if(c)return JSON.parse(c);
+ try{
+  const r=await fetch("https://dailybible.ca/api/"+encodeURIComponent(ref)+"?translation=kjv",{headers:{Accept:"application/json"}});
+  if(!r.ok)throw new Error("API");
+  const j=await r.json();const text=j.text||((j.verses||[]).map(v=>v.text).join(" "));
+  const out={ref:j.reference||ref,text};localStorage.setItem(key,JSON.stringify(out));return out;
+ }catch(e){return{ref,text:"KJV text is unavailable offline for this verse. Open the app while connected to the internet to cache it on this device."}}
 }
-function prayer(day){const p=["Panginoon, salamat sa araw na ito. Bigyan Mo ako ng karunungan sa trabaho, pagtitiis sa pagsubok, at malasakit sa pamilya. Tulungan Mo akong gumawa ng tama kahit mahirap. Sa pangalan ni Jesus, Amen.","Panginoon, gabayan Mo ang aking mga desisyon ngayong araw. Ingatan Mo ang aking pamilya at turuan Mo akong maging mahinahon sa salita at gawa. Bigyan Mo ako ng pusong marunong magpasalamat. Sa pangalan ni Jesus, Amen.","Ama, ipinagkakatiwala ko sa Iyo ang aking mga alalahanin. Tulungan Mo akong gawin ang aking bahagi at iwan sa Iyo ang hindi ko kayang kontrolin. Bigyan Mo ako ng kapayapaan at tapang. Sa pangalan ni Jesus, Amen.","Panginoon, tulungan Mo akong maging tapat sa tungkulin, mabuti sa kapwa, at mapagmahal sa tahanan. Ipakita Mo sa akin ang susunod na tamang hakbang. Sa pangalan ni Jesus, Amen."];return p[(day-1)%p.length]}
-
-function horoscope(i){const zi=content.zodiacs.findIndex(x=>x.name===selectedZodiac),seed=(i*13+zi*17)%365,zz=z();$("#horoscope").innerHTML=`<div class="horo-title">${zz.symbol} ${zz.name}</div><div class="horo-grid"><div class="horo-item"><b>💼 Work</b>${work[seed%work.length]}</div><div class="horo-item"><b>💰 Money</b>${money[(seed*3+zi)%money.length]}</div><div class="horo-item"><b>❤️ Love</b>${love[(seed*5+zi)%love.length]}</div><div class="horo-item"><b>👨‍👩‍👧 Family</b>${family[(seed*7+zi)%family.length]}</div></div><div class="horo-personal"><b>🧠 Personal guidance</b><br>${personal[(seed*11+zi)%personal.length]}</div><div class="notice">Zodiac dates: ${zz.dates}. Horoscope is for reflection and entertainment, not a guaranteed prediction.</div>`}
-
+function renderZodiac(){
+ const box=$("#zodiacPicker");
+ box.innerHTML=content.zodiacs.map(z=>`<button class="${z.name===selectedZodiac?"active":""}" data-z="${z.name}">${z.symbol}<small>${z.name}</small></button>`).join("");
+ box.querySelectorAll("button").forEach(b=>b.onclick=()=>{selectedZodiac=b.dataset.z;localStorage.setItem("aag-zodiac",selectedZodiac);renderHoroscope()});
+}
+function renderHoroscope(){
+ const z=zodiac(),i=dayIndex(),seed=(i*17+content.zodiacs.findIndex(x=>x.name===selectedZodiac)*31)%365;
+ $("#horoscopeBody").innerHTML=`<div class="horo-title">${z.symbol} ${z.name}</div>
+ <div class="horo-grid">
+ <div class="horo-item"><b>💼 Work</b>${work[seed%work.length]}</div>
+ <div class="horo-item"><b>💰 Money</b>${money[(seed*3)%money.length]}</div>
+ <div class="horo-item"><b>❤️ Love</b>${love[(seed*5)%love.length]}</div>
+ <div class="horo-item"><b>👨‍👩‍👧 Family</b>${family[(seed*7)%family.length]}</div>
+ </div><div class="horo-note">Zodiac dates: ${z.dates}</div>`;
+}
 async function render(){
- const i=idx(),d=content.days[i],v=await verse(d.reference);
+ if(!content)return;
+ const d=content.days[dayIndex()],v=await getVerse(d.reference);
  $("#bg").style.backgroundImage=`url("${d.background}")`;
- $("#dateText").textContent=fmt(selectedDate);$("#greeting").textContent=greeting();$("#natureText").textContent=d.natureTitle+" • Day "+d.day+" of 365";
- $("#verseRef").textContent=v.ref;$("#verseText").textContent=`“${v.text}”`;$("#reflection").textContent=d.reflection;$("#prayer").textContent=prayer(d.day);
- $("#source").textContent="King James Version • Public Domain";$("#dayCount").textContent=`Daily reading ${d.day}/365`;$("#datePicker").value=dateISO(selectedDate);
- const f=JSON.parse(localStorage.getItem("favorites")||"[]");$("#favBtn").textContent=f.includes(dateISO(selectedDate))?"♥ Saved":"♡ Save Verse";
- renderPicker();horoscope(i);
+ $("#dateText").textContent=displayDate(selectedDate);
+ $("#greeting").textContent=greeting();
+ $("#natureText").textContent=`${d.theme} • Day ${d.day} of 365`;
+ $("#dayLabel").textContent=`Day ${d.day} of 365`;
+ $("#themeLabel").textContent=d.theme;
+ $("#verseRef").textContent=v.ref;
+ $("#verseText").textContent=`“${v.text}”`;
+ $("#reflection").textContent=d.reflection;
+ $("#prayer").textContent=d.prayer;
+ $("#action").textContent=d.action;
+ $("#datePicker").value=iso(selectedDate);
+ $("#favBtn").textContent=saved().includes(iso(selectedDate))?"♥ Saved":"♡ Save Verse";
+ $("#markBtn").textContent=readDays().includes(iso(selectedDate))?"✓ Read":"✓ Mark as Read";
+ renderZodiac();renderHoroscope();updateProgress();
 }
-function renderPicker(){const w=$("#zodiacPicker");w.innerHTML=content.zodiacs.map(x=>`<button class="${x.name===selectedZodiac?"active":""}" data-z="${x.name}">${x.symbol}<small>${x.name}</small></button>`).join("");w.querySelectorAll("button").forEach(b=>b.onclick=()=>{selectedZodiac=b.dataset.z;localStorage.setItem("zodiac",selectedZodiac);render()})}
-function moveDay(n){selectedDate=new Date(selectedDate);selectedDate.setDate(selectedDate.getDate()+n);render();window.scrollTo({top:0,behavior:"smooth"})}
-
+function move(n){selectedDate=new Date(selectedDate);selectedDate.setDate(selectedDate.getDate()+n);render();window.scrollTo({top:0,behavior:"smooth"})}
+function markRead(){const k=iso(selectedDate),a=readDays();if(!a.includes(k))a.push(k);localStorage.setItem("aag-read",JSON.stringify(a));render()}
+function toggleSaved(){const k=iso(selectedDate),a=saved(),i=a.indexOf(k);if(i<0)a.push(k);else a.splice(i,1);localStorage.setItem("aag-saved",JSON.stringify(a));render()}
+function showPage(p){
+ currentPage=p;["home","saved","calendar","progress","about"].forEach(x=>{$("#"+x+"Page")?.classList.toggle("hidden",x!==p)});
+ $("#homePage").classList.toggle("hidden",p!=="home");$("#drawer").classList.remove("open");
+ if(p==="saved")renderSaved();if(p==="calendar")renderCalendar();if(p==="progress")updateProgressPage();if(p==="about"){}
+}
+function renderSaved(){
+ const box=$("#savedList"),a=saved();box.innerHTML="";
+ if(!a.length){box.innerHTML='<div class="card"><p>Wala ka pang naka-save na devotional.</p></div>';return}
+ a.sort().reverse().forEach(k=>{const d=new Date(k+"T12:00:00"),day=planDay(d),item=content.days[day-1];const el=document.createElement("div");el.className="saved-item";el.innerHTML=`<b>${displayDate(d)}</b><br>${item.reference} • ${item.theme}<br><button class="secondary wide">Open</button>`;el.querySelector("button").onclick=()=>{selectedDate=d;showPage("home");render()};box.appendChild(el)})
+}
+function renderCalendar(){
+ const box=$("#calendar"),d=new Date(selectedDate),y=d.getFullYear(),m=d.getMonth(),first=new Date(y,m,1),last=new Date(y,m+1,0);
+ const names=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];let h=`<div class="calendar-head"><button id="cmPrev" class="secondary">←</button><b>${first.toLocaleDateString("en-PH",{month:"long",year:"numeric"})}</b><button id="cmNext" class="secondary">→</button></div><div class="cal-grid">${names.map(n=>`<div class="source" style="text-align:center">${n}</div>`).join("")}`;
+ for(let i=0;i<first.getDay();i++)h+="<div></div>";
+ const s=saved(),r=readDays(),today=iso(new Date());
+ for(let n=1;n<=last.getDate();n++){const x=new Date(y,m,n),k=iso(x),cl=["cal-cell","day",k===today?"today":"",r.includes(k)?"read":"",s.includes(k)?"saved":""].join(" ");h+=`<button class="${cl}" data-date="${k}">${n}</button>`}
+ h+="</div>";box.innerHTML=h;
+ $("#cmPrev").onclick=()=>{selectedDate=new Date(y,m-1,1);renderCalendar()};
+ $("#cmNext").onclick=()=>{selectedDate=new Date(y,m+1,1);renderCalendar()};
+ box.querySelectorAll("[data-date]").forEach(b=>b.onclick=()=>{selectedDate=new Date(b.dataset.date+"T12:00:00");showPage("home");render()});
+}
+function updateProgress(){
+ const n=readDays().length,p=Math.min(100,Math.round(n/365*100));
+ const pb=document.querySelector("#progressPage .progressbar");if(pb)pb.firstElementChild.style.width=p+"%";
+}
+function updateProgressPage(){
+ const n=readDays().length,p=Math.min(100,Math.round(n/365*100)),s=saved().length;
+ $("#progress").innerHTML=`<div class="card"><div class="stat"><b>${n}</b> of 365 days read</div><div class="progressbar"><div style="width:${p}%"></div></div><div class="stat">${p}% complete</div><div class="stat">❤️ ${s} saved devotional${s===1?"":"s"}</div><div class="stat">🔥 ${streak()} day streak</div></div>`;
+}
+function streak(){const a=new Set(readDays());let n=0,d=new Date();while(a.has(iso(d))){n++;d.setDate(d.getDate()-1)}return n}
+function search(q){
+ const box=$("#searchResults");q=q.trim().toLowerCase();if(!q){box.innerHTML="";return}
+ const results=content.days.filter(d=>(d.reference+" "+d.theme+" "+d.reflection+" "+d.action).toLowerCase().includes(q)).slice(0,25);
+ box.innerHTML=results.length?results.map(d=>`<div class="result-item"><b>Day ${d.day} • ${d.theme}</b><br>${d.reference}<br><button class="secondary wide" data-day="${d.day}">Open</button></div>`).join(""):'<div class="source">Walang nahanap.</div>';
+ box.querySelectorAll("[data-day]").forEach(b=>b.onclick=()=>{selectedDate=new Date(new Date().getFullYear(),0,Number(b.dataset.day));showPage("home");render()});
+}
+$("#menuBtn").onclick=()=>$("#drawer").classList.toggle("open");
+$("#drawer").querySelectorAll("[data-page]").forEach(b=>b.onclick=()=>showPage(b.dataset.page));
+$("#prevBtn").onclick=()=>move(-1);$("#nextBtn").onclick=()=>move(1);
+$("#todayBtn").onclick=()=>{selectedDate=new Date();showPage("home");render()};
 $("#datePicker").onchange=e=>{selectedDate=new Date(e.target.value+"T12:00:00");render()};
-$("#todayBtn").onclick=()=>{selectedDate=new Date();render();window.scrollTo({top:0,behavior:"smooth"})};
-$("#prevBtn").onclick=()=>moveDay(-1);$("#nextBtn").onclick=()=>moveDay(1);
-$("#favBtn").onclick=()=>{const k=dateISO(selectedDate),f=JSON.parse(localStorage.getItem("favorites")||"[]"),n=f.indexOf(k);n<0?f.push(k):f.splice(n,1);localStorage.setItem("favorites",JSON.stringify(f));render()};
-$("#shareBtn").onclick=async()=>{const text=`Araw-Araw na Gabay\n${fmt(selectedDate)}\n${$("#verseRef").textContent}\n${$("#verseText").textContent}\n\n${$("#reflection").textContent}\n\n${$("#prayer").textContent}`;if(navigator.share)await navigator.share({title:"Araw-Araw na Gabay",text});else await navigator.clipboard.writeText(text)};
-$("#darkBtn").onclick=()=>document.body.classList.toggle("lightread");
-document.querySelectorAll(".bottom-nav button").forEach(b=>b.onclick=()=>{const x=b.dataset.scroll;document.querySelector(x==="top"?"main":x==="scripture"?".scripture":x==="horoscope"?".horoscope-card":"#datePicker").scrollIntoView({behavior:"smooth"})});
-window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredInstall=e;$("#installBtn").hidden=false});
-$("#installBtn").onclick=async()=>{if(deferredInstall){deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;$("#installBtn").hidden=true}};
+$("#favBtn").onclick=toggleSaved;$("#markBtn").onclick=markRead;
+$("#shareBtn").onclick=async()=>{const text=`Araw-Araw na Gabay\n${displayDate(selectedDate)}\n${$("#verseRef").textContent}\n${$("#verseText").textContent}\n\n${$("#reflection").textContent}\n\n${$("#prayer").textContent}`;if(navigator.share)await navigator.share({title:"Araw-Araw na Gabay",text});else{await navigator.clipboard.writeText(text);alert("Nakopya ang devotional.");}};
+$("#searchBox").oninput=e=>search(e.target.value);
+$$("[data-nav]").forEach(b=>b.onclick=()=>{const n=b.dataset.nav;if(n==="home"){showPage("home");window.scrollTo({top:0,behavior:"smooth"})}else if(n==="bible"){showPage("home");document.querySelector(".scripture").scrollIntoView({behavior:"smooth"})}else if(n==="horoscope"){showPage("home");document.querySelector(".horoscope").scrollIntoView({behavior:"smooth"})}else showPage("calendar")});
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferred=e;$("#installBtn").classList.remove("hidden")});
+$("#installBtn").onclick=async()=>{if(!deferred)return;deferred.prompt();await deferred.userChoice;deferred=null;$("#installBtn").classList.add("hidden")};
 if("serviceWorker"in navigator)window.addEventListener("load",()=>navigator.serviceWorker.register("sw.js"));
-fetch("data/content.json").then(r=>r.json()).then(x=>{content=x;render()}).catch(()=>$("#reflection").textContent="Hindi ma-load ang daily content. Suriin ang internet at subukang muli.");
+
+fetch("data/content.json").then(r=>r.json()).then(x=>{content=x;render()}).catch(()=>{$("#verseText").textContent="Hindi ma-load ang app data. I-refresh kapag may internet."});

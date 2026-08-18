@@ -42,7 +42,11 @@ function renderHoroscope(){
 async function render(){
  if(!content)return;
  const d=content.days[dayIndex()],v=await getVerse(d.reference);
- $("#bg").style.backgroundImage=`url("${d.background}")`;
+ const bgUrl = d.background.startsWith("./") ? d.background : "./" + d.background;
+ const probe=new Image();
+ probe.onload=()=>{$("#bg").style.backgroundImage=`url("${bgUrl}")`};
+ probe.onerror=()=>{$("#bg").style.backgroundImage=`url("./assets/backgrounds/bg-01.svg")`};
+ probe.src=bgUrl;
  $("#dateText").textContent=displayDate(selectedDate);
  $("#greeting").textContent=greeting();
  $("#natureText").textContent=`${d.theme} • Day ${d.day} of 365`;

@@ -1,8 +1,6 @@
-Araw-Araw na Gabay FINAL 1.0
-365-day curated devotional
-KJV 1611 historical translation attribution
-Filipino reflections, prayers and practical actions
-Calendar, saved devotionals, progress, streak, search
-Date-aware zodiac horoscope
-30 local nature backgrounds
-Installable PWA and service worker
+Araw-Araw na Gabay FINAL 1.1
+Background path/loading corrected
+Explicit ./assets/backgrounds paths
+Background preload with fallback
+Service worker cache version bumped to aag-final-1-1
+Old service-worker caches deleted on activation

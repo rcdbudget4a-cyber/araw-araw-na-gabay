@@ -41,3 +41,7 @@ The app bundles its interface, data, icons, and backgrounds. KJV verse text is f
 
 ## Horoscope note
 Horoscope content is for reflection and entertainment, not guaranteed prediction.
+
+
+## FINAL 1.1 background fix
+Backgrounds now use explicit relative `./assets/backgrounds/` paths, are preloaded before display, have a local fallback, and use a new service-worker cache version so the old cached background path is removed after deployment.

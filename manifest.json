@@ -1,7 +1,7 @@
 {
   "name": "Araw-Araw na Gabay",
   "short_name": "Araw-Araw",
-  "description": "Daily Bible, Filipino reflection, prayer and horoscope.",
+  "description": "Daily KJV Bible, Filipino reflection, prayer and horoscope.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
